@@ -1,12 +1,10 @@
-class Transaction {
-  late String id;
-  late String title;
-  late double amount;
-  late DateTime date;
+import 'package:flutter/material.dart';
 
-  Transaction(
-      {required this.id,
-      required this.title,
-      required this.amount,
-      required this.date});
+class Transaction {
+  late String? id;
+  late String title;
+  late double price;
+  late DateTime? date;
+
+  Transaction({this.id, required this.title, required this.price, this.date});
 }
