@@ -1,6 +1,8 @@
 # montrack
 
-A new Flutter project.
+A mobile application which helps track your expanses. 
+
+Everyday you will get a notification to add your expanses into the app in order to have an accurate overview on how much money you have spent. 
 
 ## Getting Started
 
