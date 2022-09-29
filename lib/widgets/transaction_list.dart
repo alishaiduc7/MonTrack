@@ -24,47 +24,49 @@ class TransactionList extends StatelessWidget {
             )),
         Container(
           height: 300,
-          child: SingleChildScrollView(
-            child: Column(
-              children: transactions.map((transaction) {
-                return Card(
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.symmetric(
-                              vertical: 10, horizontal: 15),
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.green.shade400,
-                            border: Border.all(color: Colors.green, width: 2),
-                          ),
-                          child: Text(
-                            transaction.price.toString() + ' lei',
-                            style: const TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Colors.white),
-                          ),
+          child: ListView.builder(
+            itemBuilder: (snapshot, index) {
+              return Card(
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        padding: const EdgeInsets.all(10),
+                        decoration: BoxDecoration(
+                          color: Colors.green.shade400,
+                          border: Border.all(color: Colors.green, width: 2),
                         ),
-                        Column(
-                          children: [
-                            Text(
-                              transaction.title,
-                              style: const TextStyle(
-                                  fontWeight: FontWeight.bold, fontSize: 15),
-                            ),
-                            Text(DateFormat.yMMMd().format(transaction.date!),
-                                style: const TextStyle(color: Colors.grey)),
-                          ],
-                        )
-                      ]),
-                );
-              }).toList(),
-            ),
+                        child: Text(
+                          transactions[index].price.toString() + ' lei',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.white),
+                        ),
+                      ),
+                      Column(
+                        children: [
+                          Text(
+                            transactions[index].title,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 15),
+                          ),
+                          Text(
+                              DateFormat.yMMMd()
+                                  .format(transactions[index].date!),
+                              style: const TextStyle(color: Colors.grey)),
+                        ],
+                      )
+                    ]),
+              );
+            },
+            itemCount: transactions.length,
           ),
         ),
+        //),
       ],
     );
   }
